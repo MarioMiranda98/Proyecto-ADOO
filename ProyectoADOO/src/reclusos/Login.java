@@ -5,6 +5,9 @@
  */
 package reclusos;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author FAROL
@@ -110,9 +113,32 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println(campoUsuario.getText() + " " + passUsuario.getText());
-        campoUsuario.setText("");
-        passUsuario.setText("");
+        //System.out.println(campoUsuario.getText() + " " + passMD5.getMD5(passUsuario.getText()));
+        try {
+            int total = 0;
+            String nombreUsuario = campoUsuario.getText();
+            String pass = EncriptadorAES.encriptar(passUsuario.getText(), "secreto!");
+
+            if (nombreUsuario == "" || pass == "")
+                JOptionPane.showMessageDialog(Login.this, "Error", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
+            else {
+                Connection con = Conexion.dameConexion();
+                Statement sentencia = con.createStatement();
+                ResultSet rs = sentencia.executeQuery("SELECT * FROM usuarios WHERE nombreusuario = '" + nombreUsuario + "' AND contrasena = '" + pass + "'");
+
+                while (rs.next()) {
+                    total += 1;
+                }
+
+                if (total == 1) {
+                    System.out.println("Ingresar al sistema");
+                } else {
+                    System.out.println("Nel");
+                }
+
+                rs.close();
+            }
+        } catch(Exception e) { e.printStackTrace(); }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -149,7 +175,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JButton jButton1;

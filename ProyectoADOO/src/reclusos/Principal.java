@@ -5,6 +5,9 @@
  */
 package reclusos;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author FAROL
@@ -12,6 +15,5 @@ package reclusos;
 public class Principal {
     public static void main(String[] args) {
         new Login().setVisible(true);
-        new Conexion().dameConexion();
     }
 }

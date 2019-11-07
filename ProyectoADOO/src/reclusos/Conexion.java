@@ -16,14 +16,14 @@ public class Conexion {
         conexion = null;
     }
     
-    public Connection dameConexion() {
+    public static Connection dameConexion() {
         try {
             conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adooreclusos?serverTimezone=UTC&SSL=false", "root", "root");
-            System.out.println("Exito!!");
+            //System.out.println("Exito!!");
         }catch(Exception e) { e.getMessage(); }
         
         return conexion;
     }
     
-    public Connection conexion;
+    public static Connection conexion;
 }
