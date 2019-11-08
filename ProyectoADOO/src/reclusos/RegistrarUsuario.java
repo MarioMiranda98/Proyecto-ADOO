@@ -59,18 +59,25 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel1.setText("Registrar Usuario");
 
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel2.setText("CURP");
 
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel3.setText("Nombre");
 
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel4.setText("Apellidos");
 
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel5.setText("Edad");
 
+        jLabel6.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel6.setText("Usuario");
 
+        jLabel7.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel7.setText("Password");
 
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel8.setText("Tipo");
 
         jButton1.setText("Agregar");
@@ -87,12 +94,15 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel9.setText("Años");
 
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Registrador", "Consultor" }));
 
+        jLabel10.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel10.setText("Domicilio");
 
+        jLabel11.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         jLabel11.setText("Sexo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,7 +157,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(campoSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(campoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,6 +230,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         
         if(curp.equals("") || nombre.equals("") || apellidos.equals("") || edad.equals("") || usuario.equals("") || pass.equals("") || domicilio.equals("") || sexo.equals("") || sexo.length() > 1) {
             System.out.println("Error");
+            borrado();
         } else {
             try {
                 Connection miConexion = Conexion.dameConexion();
