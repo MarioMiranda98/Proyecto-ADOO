@@ -201,6 +201,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        borrado();
         RegistrarUsuario.this.dispose();
         p.show();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -229,10 +230,21 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                 sentencia.executeUpdate(sqlInsertar);
                 
                 JOptionPane.showMessageDialog(RegistrarUsuario.this, "Usuario Registrado", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                borrado();
             } catch(Exception e) { e.printStackTrace(); }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void borrado() {
+        campoCurp.setText("");
+        campoNombre.setText("");
+        campoApellidos.setText("");
+        campoEdad.setText("");
+        campoSexo.setText("");
+        campoUsuario.setText("");
+        campoDomicilio.setText("");
+        campoPass.setText("");
+    }
     /**
      * @param args the command line arguments
      */

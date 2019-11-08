@@ -5,12 +5,6 @@
  */
 package reclusos;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.net.URL;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 /**
  *
  * @author FAROL
@@ -169,6 +163,8 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         //System.out.println(usuario + " " + tipo);
         Principal.this.dispose();
+        lg.campoUsuario.setText("");
+        lg.passUsuario.setText("");
         lg.show();
     }//GEN-LAST:event_jButton8ActionPerformed
 
