@@ -161,6 +161,7 @@ public class RegistrarDelito extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(RegistrarDelito.this, "Delito Registrado", "Registro de Delitos", JOptionPane.INFORMATION_MESSAGE);
                 borrado();
+                miConexion.close();
             } catch(Exception e) { e.printStackTrace(); }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

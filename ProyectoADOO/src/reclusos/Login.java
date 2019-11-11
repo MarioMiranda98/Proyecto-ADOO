@@ -145,6 +145,7 @@ public class Login extends javax.swing.JFrame {
                 }
 
                 rs.close();
+                con.close();
             }
         } catch(Exception e) { e.printStackTrace(); }
     }//GEN-LAST:event_jButton1ActionPerformed

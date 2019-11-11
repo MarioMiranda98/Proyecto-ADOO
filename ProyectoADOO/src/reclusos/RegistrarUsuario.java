@@ -242,6 +242,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(RegistrarUsuario.this, "Usuario Registrado", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 borrado();
+                miConexion.close();
             } catch(Exception e) { e.printStackTrace(); }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

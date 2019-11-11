@@ -5,6 +5,9 @@
  */
 package reclusos;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author FAROL
@@ -63,8 +66,18 @@ public class RegistrarCondena extends javax.swing.JFrame {
         jLabel6.setText("Duracion");
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,6 +156,43 @@ public class RegistrarCondena extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        borrado();
+        RegistrarCondena.this.dispose();
+        p.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        idCondena = campoCondena.getText();
+        descripcion = campoDescripcion.getText();
+        tipo = (String) comboTipo.getSelectedItem();
+        duracion = campoDuracion.getText();
+        
+        if(idCondena.equals("") || descripcion.equals("") || duracion.equals("")) {
+            System.out.println("Error");
+        } else {
+            try {
+                Connection miConexion = Conexion.dameConexion();
+                Statement sentencia = miConexion.createStatement();
+                
+                String sqlInsertaCondena = "INSERT INTO condenas VALUES('" + idCondena + "', '" + descripcion + "', '" + tipo +"', '" + duracion + "')";
+                sentencia.executeUpdate(sqlInsertaCondena);
+                
+                JOptionPane.showMessageDialog(RegistrarCondena.this, "Registro Exitoso", "Condena Registrada", JOptionPane.INFORMATION_MESSAGE);
+                borrado();
+                miConexion.close();
+            } catch(Exception e) { e.printStackTrace(); }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void borrado() {
+        campoCondena.setText("");
+        campoDescripcion.setText("");
+        campoDuracion.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
