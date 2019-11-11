@@ -8,6 +8,7 @@ package reclusos;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.util.regex.*;
 
 /**
  *
@@ -21,6 +22,7 @@ public class FichaRecluso extends javax.swing.JFrame {
     public FichaRecluso(Principal p) {
         initComponents();
         this.p = p;
+        setLocationRelativeTo(null);
         nombreReclusos = new ArrayList<>();
         apellidosReclusos = new ArrayList<>();
         curpReclusos = new ArrayList<>();
@@ -299,9 +301,16 @@ public class FichaRecluso extends javax.swing.JFrame {
         ficha = campoIdFicha.getText();
         fianza = campoFianza.getText();
         
+        Pattern p = Pattern.compile("[a-z]|[A-Z]");
+        Matcher m = p.matcher(fianza);
+        
         if(ficha.equals("") || fianza.equals("")) {
             System.out.println("Error");
-        } else {
+        } else if(m.find()) {
+            System.out.println("Error");
+            FichaRecluso.this.dispose();
+            new FianzaInvalida(FichaRecluso.this).show();
+        }else {
             try {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();

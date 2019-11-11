@@ -19,6 +19,7 @@ public class RegistrarCondena extends javax.swing.JFrame {
      */
     public RegistrarCondena(Principal p) {
         initComponents();
+        setLocationRelativeTo(null);
         this.p = p;
     }
 
@@ -172,6 +173,8 @@ public class RegistrarCondena extends javax.swing.JFrame {
         
         if(idCondena.equals("") || descripcion.equals("") || duracion.equals("")) {
             System.out.println("Error");
+            RegistrarCondena.this.dispose();
+            new RCFallida(RegistrarCondena.this).show();
         } else {
             try {
                 Connection miConexion = Conexion.dameConexion();

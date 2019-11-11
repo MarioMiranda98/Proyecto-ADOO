@@ -19,6 +19,7 @@ public class RegistrarReclusos extends javax.swing.JFrame {
      */
     public RegistrarReclusos(Principal p) {
         initComponents();
+        setLocationRelativeTo(null);
         this.p = p;
     }
 
@@ -178,6 +179,8 @@ public class RegistrarReclusos extends javax.swing.JFrame {
         
         if(curp.equals("") || nombre.equals("") || apellidos.equals("") || edad.equals("") || sexo.equals("")) {
             System.out.println("Error");
+            RegistrarReclusos.this.dispose();
+            new RRFallido(RegistrarReclusos.this).show();
             borrado();
         } else {
             try {

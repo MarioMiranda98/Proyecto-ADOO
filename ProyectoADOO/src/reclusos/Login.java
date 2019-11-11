@@ -19,6 +19,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
         campoUsuario.setText("");
         passUsuario.setText("");
     }
@@ -142,6 +143,7 @@ public class Login extends javax.swing.JFrame {
                     new Principal(usuario, tipo, Login.this).show();
                 } else {
                     System.out.println("Nel");
+                    JOptionPane.showMessageDialog(Login.this, "Usuario o Password incorrectos", "Login", JOptionPane.ERROR_MESSAGE);
                 }
 
                 rs.close();

@@ -19,6 +19,7 @@ public class RegistrarDelito extends javax.swing.JFrame {
      */
     public RegistrarDelito(Principal p) {
         initComponents();
+        setLocationRelativeTo(null);
         this.p = p;
     }
 
@@ -151,6 +152,8 @@ public class RegistrarDelito extends javax.swing.JFrame {
         
         if(idDelito.equals("") || delito.equals("")) {
             System.out.println("Error");
+            RegistrarDelito.this.dispose();
+            new RDFallido(RegistrarDelito.this).show();
         } else {
             try {
                 Connection miConexion = Conexion.dameConexion();
