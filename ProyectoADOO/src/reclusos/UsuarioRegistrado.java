@@ -239,13 +239,13 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        nombre = campoNombre.getText();
-        apellido= campoApellido.getText();
-        edad = campoEdad.getText();
-        sexo = campoSexo.getText();
-        curp = campoCurp.getText();
-        domicilio = campoDomicilio.getText();
-        password = campoPass.getText();
+        nombre = campoNombre.getText().trim();
+        apellido= campoApellido.getText().trim();
+        edad = campoEdad.getText().trim();
+        sexo = campoSexo.getText().trim();
+        curp = campoCurp.getText().trim();
+        domicilio = campoDomicilio.getText().trim();
+        password = campoPass.getText().trim();
         tipo = (String) comboTipo.getSelectedItem();
         
         if(nombre.equals("") || apellido.equals("") || edad.equals("") || sexo.equals("") || curp.equals("") || domicilio.equals("") || password.equals("")) {
@@ -263,6 +263,8 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
                      sentencia.executeUpdate(sqlActualizaUsuario);
                      JOptionPane.showMessageDialog(UsuarioRegistrado.this, "Usuario Actualizado");
                      cu.pintaDatos();
+                     UsuarioRegistrado.this.dispose();
+                     cu.show();
                      borrado();
                 }
                 miConexion.close();
@@ -317,7 +319,7 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
                 campoSexo.setText(rs.getString("sexo"));
                 campoDomicilio.setText(rs.getString("domicilio"));
                 campoUsuario.setText(rs.getString("nombreusuario"));
-                campoPass.setText(rs.getString("contrasena"));
+                campoPass.setText(EncriptadorAES.desencriptar(rs.getString("contrasena"), "secreto!"));
 
                 String tipo = rs.getString("tipo");
 

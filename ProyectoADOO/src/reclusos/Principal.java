@@ -112,6 +112,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton7.setText("Checar Recluso");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Salir");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -211,6 +216,12 @@ public class Principal extends javax.swing.JFrame {
         Principal.this.dispose();
         new ChecarUsuarios(Principal.this).show();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        Principal.this.dispose();
+        new FichasRegistradas(Principal.this).show();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
    
     

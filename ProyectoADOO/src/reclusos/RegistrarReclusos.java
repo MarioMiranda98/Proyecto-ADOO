@@ -171,11 +171,11 @@ public class RegistrarReclusos extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        curp = campoCurp.getText();
-        nombre = campoNombre.getText();
-        apellidos = campoApellidos.getText();
-        edad = campoEdad.getText();
-        sexo = campoSexo.getText();
+        curp = campoCurp.getText().trim();
+        nombre = campoNombre.getText().trim();
+        apellidos = campoApellidos.getText().trim();
+        edad = campoEdad.getText().trim();
+        sexo = campoSexo.getText().trim();
         
         if(curp.equals("") || nombre.equals("") || apellidos.equals("") || edad.equals("") || sexo.equals("")) {
             System.out.println("Error");

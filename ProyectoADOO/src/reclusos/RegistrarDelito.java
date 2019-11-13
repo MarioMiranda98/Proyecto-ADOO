@@ -146,8 +146,8 @@ public class RegistrarDelito extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        idDelito = campoIdDelito.getText();
-        delito = campoDelito.getText();
+        idDelito = campoIdDelito.getText().trim();
+        delito = campoDelito.getText().trim();
         tipo = (String) comboTipo.getSelectedItem();
         
         if(idDelito.equals("") || delito.equals("")) {

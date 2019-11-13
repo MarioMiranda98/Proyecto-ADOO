@@ -149,6 +149,8 @@ public class FichaRecluso extends javax.swing.JFrame {
         campoFianza = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        campoFecha = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -200,6 +202,9 @@ public class FichaRecluso extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel8.setText("Fecha De Liberacion");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,13 +239,19 @@ public class FichaRecluso extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(jButton1)
-                        .addGap(116, 116, 116)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(426, 426, 426)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(266, 266, 266)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(116, 116, 116)
+                                .addComponent(jButton2)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -274,7 +285,9 @@ public class FichaRecluso extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(campoFianza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(campoFianza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(campoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -298,13 +311,14 @@ public class FichaRecluso extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ficha = campoIdFicha.getText();
-        fianza = campoFianza.getText();
+        ficha = campoIdFicha.getText().trim();
+        fianza = campoFianza.getText().trim();
+        fecha = campoFecha.getText().trim();
         
         Pattern p = Pattern.compile("[a-z]|[A-Z]");
         Matcher m = p.matcher(fianza);
         
-        if(ficha.equals("") || fianza.equals("")) {
+        if(ficha.equals("") || fianza.equals("") || fecha.equals("")) {
             System.out.println("Error");
         } else if(m.find()) {
             System.out.println("Error");
@@ -315,7 +329,7 @@ public class FichaRecluso extends javax.swing.JFrame {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();
                 
-                String sqlInsertarFicha = "INSERT INTO ficha VALUES('" + ficha + "', '" + iddelitos.get(comboIdDelito.getSelectedIndex()) + "', '" + curpReclusos.get(comboIdRecluso.getSelectedIndex()) + "', '" + idcondena.get(comboIdCondena.getSelectedIndex()) + "', '" + fianza +"')";
+                String sqlInsertarFicha = "INSERT INTO ficha VALUES('" + ficha + "', '" + iddelitos.get(comboIdDelito.getSelectedIndex()) + "', '" + curpReclusos.get(comboIdRecluso.getSelectedIndex()) + "', '" + idcondena.get(comboIdCondena.getSelectedIndex()) + "', '" + fianza +"', '" + fecha + "')";
                 sentencia.executeUpdate(sqlInsertarFicha);
                 
                 JOptionPane.showMessageDialog(FichaRecluso.this, "Ficha creada", "Resultado", JOptionPane.INFORMATION_MESSAGE);
@@ -340,6 +354,7 @@ public class FichaRecluso extends javax.swing.JFrame {
     private Principal p;
     private String ficha;
     private String fianza;
+    private String fecha;
     private ArrayList<String> nombreReclusos;
     private ArrayList<String> apellidosReclusos;
     private ArrayList<String> curpReclusos;
@@ -351,6 +366,7 @@ public class FichaRecluso extends javax.swing.JFrame {
     private javax.swing.JTextField apellidoRecluso;
     private javax.swing.JTextField campoCondena;
     private javax.swing.JTextField campoDelito;
+    private javax.swing.JTextField campoFecha;
     private javax.swing.JTextField campoFianza;
     private javax.swing.JTextField campoIdFicha;
     private javax.swing.JComboBox<String> comboIdCondena;
@@ -365,6 +381,7 @@ public class FichaRecluso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField nombreRecluso;
     // End of variables declaration//GEN-END:variables
 }

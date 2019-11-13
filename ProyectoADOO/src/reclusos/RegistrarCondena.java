@@ -40,8 +40,6 @@ public class RegistrarCondena extends javax.swing.JFrame {
         campoDescripcion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         comboTipo = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        campoDuracion = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -62,9 +60,6 @@ public class RegistrarCondena extends javax.swing.JFrame {
         jLabel5.setText("Tipo");
 
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GRAVES", "MENOS GRAVES", "PENAS LEVES" }));
-
-        jLabel6.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
-        jLabel6.setText("Duracion");
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -97,23 +92,19 @@ public class RegistrarCondena extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(campoDescripcion)
-                                    .addComponent(comboTipo, 0, 228, Short.MAX_VALUE)
-                                    .addComponent(campoDuracion)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(jButton1)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel1))
+                                    .addComponent(comboTipo, 0, 228, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(43, 43, 43)))
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(194, 194, 194)
@@ -126,7 +117,7 @@ public class RegistrarCondena extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2)
                 .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -136,22 +127,15 @@ public class RegistrarCondena extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(campoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,12 +150,11 @@ public class RegistrarCondena extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        idCondena = campoCondena.getText();
-        descripcion = campoDescripcion.getText();
+        idCondena = campoCondena.getText().trim();
+        descripcion = campoDescripcion.getText().trim();
         tipo = (String) comboTipo.getSelectedItem();
-        duracion = campoDuracion.getText();
         
-        if(idCondena.equals("") || descripcion.equals("") || duracion.equals("")) {
+        if(idCondena.equals("") || descripcion.equals("")) {
             System.out.println("Error");
             RegistrarCondena.this.dispose();
             new RCFallida(RegistrarCondena.this).show();
@@ -180,7 +163,7 @@ public class RegistrarCondena extends javax.swing.JFrame {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();
                 
-                String sqlInsertaCondena = "INSERT INTO condenas VALUES('" + idCondena + "', '" + descripcion + "', '" + tipo +"', '" + duracion + "')";
+                String sqlInsertaCondena = "INSERT INTO condenas VALUES('" + idCondena + "', '" + descripcion + "', '" + tipo +"')";
                 sentencia.executeUpdate(sqlInsertaCondena);
                 
                 JOptionPane.showMessageDialog(RegistrarCondena.this, "Registro Exitoso", "Condena Registrada", JOptionPane.INFORMATION_MESSAGE);
@@ -193,7 +176,6 @@ public class RegistrarCondena extends javax.swing.JFrame {
     private void borrado() {
         campoCondena.setText("");
         campoDescripcion.setText("");
-        campoDuracion.setText("");
     }
     
     /**
@@ -204,12 +186,10 @@ public class RegistrarCondena extends javax.swing.JFrame {
     private String idCondena;
     private String descripcion;
     private String tipo;
-    private String duracion;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoCondena;
     private javax.swing.JTextField campoDescripcion;
-    private javax.swing.JTextField campoDuracion;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -218,6 +198,5 @@ public class RegistrarCondena extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

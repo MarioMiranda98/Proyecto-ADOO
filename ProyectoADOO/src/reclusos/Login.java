@@ -121,8 +121,8 @@ public class Login extends javax.swing.JFrame {
         String tipo = "";
         try {
             int total = 0;
-            String nombreUsuario = campoUsuario.getText();
-            String pass = EncriptadorAES.encriptar(passUsuario.getText(), "secreto!");
+            String nombreUsuario = campoUsuario.getText().trim();
+            String pass = EncriptadorAES.encriptar(passUsuario.getText().trim(), "secreto!");
 
             if (nombreUsuario.equals("") || pass.equals(""))
                 JOptionPane.showMessageDialog(Login.this, "Error", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
