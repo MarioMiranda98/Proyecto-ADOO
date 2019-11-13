@@ -152,7 +152,7 @@ public class RegistrarReclusos extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(campoSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -187,7 +187,7 @@ public class RegistrarReclusos extends javax.swing.JFrame {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();
                 
-                String sqlInsertarRecluso = "INSERT INTO recluso VALUES('" + nombre +"', '" + apellidos +"', " + edad + ", '" + sexo + "', '" + curp + "')";
+                String sqlInsertarRecluso = "INSERT INTO recluso VALUES('" + nombre +"', '" + apellidos +"', " + edad + ", '" + sexo + "', '" + curp + "', 'Recluido')";
                 sentencia.executeUpdate(sqlInsertarRecluso);
                 
                 JOptionPane.showMessageDialog(RegistrarReclusos.this, "Recluso Registrado", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
