@@ -162,6 +162,7 @@ public class ChecarUsuarios extends javax.swing.JFrame {
             rs = sentencia.executeQuery(recuperarUsuarios);
             
             comboUsuarios.removeAllItems();
+            
             while(rs.next()) {
                 nombreUsuario = rs.getString("nombreusuario");
                 nombre = rs.getString("nombre");

@@ -150,6 +150,10 @@ public class RegistrarCondena extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       registrarCondena(evt);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void registrarCondena(java.awt.event.ActionEvent evt) {
         idCondena = campoCondena.getText().trim();
         descripcion = campoDescripcion.getText().trim();
         tipo = (String) comboTipo.getSelectedItem();
@@ -171,8 +175,8 @@ public class RegistrarCondena extends javax.swing.JFrame {
                 miConexion.close();
             } catch(Exception e) { e.printStackTrace(); }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
+    
     private void borrado() {
         campoCondena.setText("");
         campoDescripcion.setText("");

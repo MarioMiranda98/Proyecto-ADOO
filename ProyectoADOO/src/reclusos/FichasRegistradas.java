@@ -7,6 +7,7 @@ package reclusos;
 
 import java.sql.*;
 import javax.swing.table.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,9 +20,11 @@ public class FichasRegistradas extends javax.swing.JFrame {
      */
     public FichasRegistradas(Principal p) {
         initComponents();
+        curp = new ArrayList<>();
         pintaDatos();
         setLocationRelativeTo(null);
         this.p = p;
+     
     }
 
     /**
@@ -67,6 +70,11 @@ public class FichasRegistradas extends javax.swing.JFrame {
         });
 
         jButton2.setText("Ver");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,16 +144,22 @@ public class FichasRegistradas extends javax.swing.JFrame {
         p.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        FichasRegistradas.this.dispose();
+        new ChecarReclusos(FichasRegistradas.this, curp.get(comboReclusos.getSelectedIndex())).show();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public void pintaDatos() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[] {"Id. Ficha", "Nombre", "Apellidos", "Duracion", "Estado"});
+        modelo.setColumnIdentifiers(new Object[] {"Id. Ficha", "Nombre", "Apellidos", "Fecha"});
         
         try {
             Connection miConexion = Conexion.dameConexion();
             Statement sentencia = miConexion.createStatement();
             ResultSet rs = null;
             
-            String recuperaReclusos = "SELECT ficha.idficha, recluso.nombre, recluso.apellido, condenas.duracion , recluso.estado FROM ficha, recluso, condenas WHERE ficha.recluso_idrecluso = recluso.curp AND ficha.condenas_idcondenas = condenas.idCondenas";            
+            String recuperaReclusos = "SELECT ficha.idficha, recluso.nombre, recluso.apellido, recluso.curp , ficha.fecha FROM ficha, recluso, condenas WHERE ficha.recluso_idrecluso = recluso.curp AND ficha.condenas_idcondenas = condenas.idCondenas";            
             rs = sentencia.executeQuery(recuperaReclusos);
             
             comboReclusos.removeAllItems();
@@ -153,10 +167,10 @@ public class FichasRegistradas extends javax.swing.JFrame {
                 idFicha = rs.getString("idficha");
                 nombre = rs.getString("nombre");
                 apellidos = rs.getString("apellido");
-                duracion = rs.getString("duracion");
-                estado = rs.getString("estado");
+                curp.add(rs.getString("curp"));
+                fecha = rs.getString("fecha");
                 
-                modelo.addRow(new Object[] {idFicha, nombre, apellidos, duracion, estado});
+                modelo.addRow(new Object[] {idFicha, nombre, apellidos, fecha});
                 comboReclusos.addItem(nombre + " " + apellidos);
             }
             
@@ -171,8 +185,8 @@ public class FichasRegistradas extends javax.swing.JFrame {
     private String idFicha;
     private String nombre;
     private String apellidos;
-    private String duracion;
-    private String estado;
+    private ArrayList<String> curp;
+    private String fecha;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboReclusos;
     private javax.swing.JButton jButton1;

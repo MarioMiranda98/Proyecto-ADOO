@@ -125,7 +125,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setText("Carta de Antecedentes Penales");
+        jButton9.setText("Expedir Cartas");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,6 +227,12 @@ public class Principal extends javax.swing.JFrame {
         Principal.this.dispose();
         new FichasRegistradas(Principal.this).show();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        Principal.this.dispose();
+        new ExpedirCarta(Principal.this).show();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
    
     

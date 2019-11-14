@@ -239,6 +239,15 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       actualizarUsuario(evt);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+      eliminarUsuario(evt);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void actualizarUsuario(java.awt.event.ActionEvent evt) {
         nombre = campoNombre.getText().trim();
         apellido= campoApellido.getText().trim();
         edad = campoEdad.getText().trim();
@@ -270,11 +279,10 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
                 miConexion.close();
             }catch(Exception e) { e.printStackTrace(); }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-       int resp = JOptionPane.showConfirmDialog(UsuarioRegistrado.this, "¿Eliminar usuario?", "Eliminar", JOptionPane.YES_NO_OPTION);
+    }
+    
+    private void eliminarUsuario(java.awt.event.ActionEvent evt) {
+         int resp = JOptionPane.showConfirmDialog(UsuarioRegistrado.this, "¿Eliminar usuario?", "Eliminar", JOptionPane.YES_NO_OPTION);
        if(resp == JOptionPane.OK_OPTION) {
            try {
                Connection miConexion = Conexion.dameConexion();
@@ -289,8 +297,8 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
                cu.show();
            } catch(Exception e) { e.printStackTrace(); }
        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
+    }
+    
     private void borrado() {
         campoCurp.setText("");
         campoNombre.setText("");

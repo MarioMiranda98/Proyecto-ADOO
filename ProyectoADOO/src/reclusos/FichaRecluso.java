@@ -151,6 +151,8 @@ public class FichaRecluso extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         campoFecha = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        campoFechaIngreso = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -205,54 +207,59 @@ public class FichaRecluso extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel8.setText("Fecha De Liberacion");
 
+        jLabel9.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel9.setText("Fecha de Ingreso");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(426, 426, 426)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoIdFicha, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(comboIdRecluso, 0, 86, Short.MAX_VALUE)
-                        .addComponent(comboIdDelito, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(comboIdCondena, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(campoFianza)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(nombreRecluso, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(266, 266, 266)
+                        .addComponent(jButton1)
+                        .addGap(116, 116, 116)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addComponent(apellidoRecluso, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
-                    .addComponent(campoDelito)
-                    .addComponent(campoCondena))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoIdFicha, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(comboIdRecluso, 0, 86, Short.MAX_VALUE)
+                                .addComponent(comboIdDelito, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboIdCondena, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoFianza)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nombreRecluso, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(apellidoRecluso, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE))
+                            .addComponent(campoDelito)
+                            .addComponent(campoCondena))))
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(426, 426, 426)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(campoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(116, 116, 116)
-                                .addComponent(jButton2)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +294,9 @@ public class FichaRecluso extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(campoFianza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
-                            .addComponent(campoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(campoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
+                            .addComponent(campoFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -311,9 +320,14 @@ public class FichaRecluso extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        crearFicha(evt);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void crearFicha(java.awt.event.ActionEvent evt) {
         ficha = campoIdFicha.getText().trim();
         fianza = campoFianza.getText().trim();
         fecha = campoFecha.getText().trim();
+        fechaIngreso = campoFechaIngreso.getText().trim();
         
         Pattern p = Pattern.compile("[a-z]|[A-Z]");
         Matcher m = p.matcher(fianza);
@@ -329,15 +343,15 @@ public class FichaRecluso extends javax.swing.JFrame {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();
                 
-                String sqlInsertarFicha = "INSERT INTO ficha VALUES('" + ficha + "', '" + iddelitos.get(comboIdDelito.getSelectedIndex()) + "', '" + curpReclusos.get(comboIdRecluso.getSelectedIndex()) + "', '" + idcondena.get(comboIdCondena.getSelectedIndex()) + "', '" + fianza +"', '" + fecha + "')";
+                String sqlInsertarFicha = "INSERT INTO ficha VALUES('" + ficha + "', '" + iddelitos.get(comboIdDelito.getSelectedIndex()) + "', '" + curpReclusos.get(comboIdRecluso.getSelectedIndex()) + "', '" + idcondena.get(comboIdCondena.getSelectedIndex()) + "', '" + fianza +"', '" + fecha + "', '" + fechaIngreso + "')";
                 sentencia.executeUpdate(sqlInsertarFicha);
                 
                 JOptionPane.showMessageDialog(FichaRecluso.this, "Ficha creada", "Resultado", JOptionPane.INFORMATION_MESSAGE);
                 borrado();
             } catch(Exception e) { e.printStackTrace(); }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
+    
     private void borrado() {
         campoIdFicha.setText("");
         campoFianza.setText("");
@@ -345,6 +359,7 @@ public class FichaRecluso extends javax.swing.JFrame {
         apellidoRecluso.setText("");
         campoDelito.setText("");
         campoCondena.setText("");
+        campoFecha.setText("");
     }
     
     /**
@@ -355,6 +370,7 @@ public class FichaRecluso extends javax.swing.JFrame {
     private String ficha;
     private String fianza;
     private String fecha;
+    private String fechaIngreso;
     private ArrayList<String> nombreReclusos;
     private ArrayList<String> apellidosReclusos;
     private ArrayList<String> curpReclusos;
@@ -367,6 +383,7 @@ public class FichaRecluso extends javax.swing.JFrame {
     private javax.swing.JTextField campoCondena;
     private javax.swing.JTextField campoDelito;
     private javax.swing.JTextField campoFecha;
+    private javax.swing.JTextField campoFechaIngreso;
     private javax.swing.JTextField campoFianza;
     private javax.swing.JTextField campoIdFicha;
     private javax.swing.JComboBox<String> comboIdCondena;
@@ -382,6 +399,7 @@ public class FichaRecluso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nombreRecluso;
     // End of variables declaration//GEN-END:variables
 }

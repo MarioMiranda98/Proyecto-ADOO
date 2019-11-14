@@ -219,6 +219,10 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        registrarUsuario(evt);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void registrarUsuario(java.awt.event.ActionEvent evt) {
         curp = campoCurp.getText().trim();
         nombre = campoNombre.getText().trim();
         apellidos = campoApellidos.getText().trim();
@@ -246,8 +250,8 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                 miConexion.close();
             } catch(Exception e) { e.printStackTrace(); }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
+    
     private void borrado() {
         campoCurp.setText("");
         campoNombre.setText("");

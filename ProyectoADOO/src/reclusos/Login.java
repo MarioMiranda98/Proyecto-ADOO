@@ -116,7 +116,11 @@ public class Login extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //System.out.println(campoUsuario.getText() + " " + passMD5.getMD5(passUsuario.getText()));
+       ingresar(evt);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ingresar(java.awt.event.ActionEvent evt) {
+         //System.out.println(campoUsuario.getText() + " " + passMD5.getMD5(passUsuario.getText()));
         String usuario = "";
         String tipo = "";
         try {
@@ -150,8 +154,8 @@ public class Login extends javax.swing.JFrame {
                 con.close();
             }
         } catch(Exception e) { e.printStackTrace(); }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
+    
     /**
      * @param args the command line arguments
      */
