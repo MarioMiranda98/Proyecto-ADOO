@@ -27,6 +27,7 @@ public class CartaAntecedentesNoPenales extends javax.swing.JFrame {
      */
     public CartaAntecedentesNoPenales(ExpedirCarta ec) {
         initComponents();
+        setLocationRelativeTo(null);
         this.ec = ec;
         fuente = new Font(Font.FontFamily.COURIER, 12, Font.NORMAL);
         fuenteBold = new Font(Font.FontFamily.COURIER, 22, Font.BOLD);
@@ -268,8 +269,10 @@ public class CartaAntecedentesNoPenales extends javax.swing.JFrame {
     
     private final String CUERPO = "\n\n"
             + "Dando Fe que es un ciudadano integro, que respeta la ley\n\n"
-            + "y busca el bien del projimo para llevar una vida armoniosa"
-            + "";
+            + "y busca el bien del projimo para llevar una vida armoniosa\n\n"
+            + "Dando total confianza en el ciudadano ya antes mencionado\n\n"
+            + "Para su optimo desarrollo en la sociedad\n\n\n\n\n\n\n\n";
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoApellidos;
     private javax.swing.JTextField campoCurp;
