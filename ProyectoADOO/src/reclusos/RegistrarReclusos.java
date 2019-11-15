@@ -191,7 +191,7 @@ public class RegistrarReclusos extends javax.swing.JFrame {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();
                 
-                String sqlInsertarRecluso = "INSERT INTO recluso VALUES('" + nombre +"', '" + apellidos +"', " + edad + ", '" + sexo + "', '" + curp + "', 'Recluido')";
+                String sqlInsertarRecluso = "INSERT INTO recluso VALUES('" + nombre +"', '" + apellidos +"', " + edad + ", '" + sexo + "', '" + curp + "', 'Recluso')";
                 sentencia.executeUpdate(sqlInsertarRecluso);
                 
                 JOptionPane.showMessageDialog(RegistrarReclusos.this, "Recluso Registrado", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);

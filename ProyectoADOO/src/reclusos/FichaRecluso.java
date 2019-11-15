@@ -343,11 +343,15 @@ public class FichaRecluso extends javax.swing.JFrame {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();
                 
-                String sqlInsertarFicha = "INSERT INTO ficha VALUES('" + ficha + "', '" + iddelitos.get(comboIdDelito.getSelectedIndex()) + "', '" + curpReclusos.get(comboIdRecluso.getSelectedIndex()) + "', '" + idcondena.get(comboIdCondena.getSelectedIndex()) + "', '" + fianza +"', '" + fecha + "', '" + fechaIngreso + "')";
+                String sqlInsertarFicha = "INSERT INTO ficha VALUES('" + ficha + "', '" + iddelitos.get(comboIdDelito.getSelectedIndex()) + "', '" + curpReclusos.get(comboIdRecluso.getSelectedIndex()) + "', '" + idcondena.get(comboIdCondena.getSelectedIndex()) + "', '" + fianza +"', '" + fecha + "', '" + fechaIngreso + "', 'Curso')";
                 sentencia.executeUpdate(sqlInsertarFicha);
+                
+                String sqlActualizarEstado = "UPDATE recluso set estado = 'Recluso' WHERE curp = '" + curpReclusos.get(comboIdRecluso.getSelectedIndex()) + "'";
+                sentencia.executeUpdate(sqlActualizarEstado);
                 
                 JOptionPane.showMessageDialog(FichaRecluso.this, "Ficha creada", "Resultado", JOptionPane.INFORMATION_MESSAGE);
                 borrado();
+                miConexion.close();
             } catch(Exception e) { e.printStackTrace(); }
         }
     }

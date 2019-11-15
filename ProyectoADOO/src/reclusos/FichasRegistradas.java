@@ -159,7 +159,7 @@ public class FichasRegistradas extends javax.swing.JFrame {
             Statement sentencia = miConexion.createStatement();
             ResultSet rs = null;
             
-            String recuperaReclusos = "SELECT ficha.idficha, recluso.nombre, recluso.apellido, recluso.curp , ficha.fecha FROM ficha, recluso, condenas WHERE ficha.recluso_idrecluso = recluso.curp AND ficha.condenas_idcondenas = condenas.idCondenas";            
+            String recuperaReclusos = "SELECT ficha.idficha, recluso.nombre, recluso.apellido, recluso.curp , ficha.fecha FROM ficha, recluso, condenas WHERE ficha.recluso_idrecluso = recluso.curp AND ficha.condenas_idcondenas = condenas.idCondenas AND ficha.estadoFicha = 'Curso'";            
             rs = sentencia.executeQuery(recuperaReclusos);
             
             comboReclusos.removeAllItems();
