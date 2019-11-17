@@ -142,12 +142,14 @@ public class Login extends javax.swing.JFrame {
                 }
 
                 if (total == 1) {
-                    System.out.println("Ingresar al sistema");
+                    //System.out.println("Ingresar al sistema");
                     Login.this.dispose();
                     new Principal(usuario, tipo, Login.this).show();
                 } else {
-                    System.out.println("Nel");
+                    //System.out.println("Nel");
                     JOptionPane.showMessageDialog(Login.this, "Usuario o Password incorrectos", "Login", JOptionPane.ERROR_MESSAGE);
+                    campoUsuario.setText("");
+                    passUsuario.setText("");
                 }
 
                 rs.close();

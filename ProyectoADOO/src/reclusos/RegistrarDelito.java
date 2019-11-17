@@ -150,15 +150,20 @@ public class RegistrarDelito extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void registrarDelito(java.awt.event.ActionEvent evt) {
-         idDelito = campoIdDelito.getText().trim();
+        idDelito = campoIdDelito.getText().trim();
         delito = campoDelito.getText().trim();
         tipo = (String) comboTipo.getSelectedItem();
         
         if(idDelito.equals("") || delito.equals("")) {
-            System.out.println("Error");
+            //System.out.println("Error");
             RegistrarDelito.this.dispose();
             new RDFallido(RegistrarDelito.this).show();
-        } else {
+        } else if(Existencias.siExiste("iddelito", "delito", idDelito)) {
+            //System.out.println("Delito Existente");
+            RegistrarDelito.this.dispose();
+            new DelitoExistente(RegistrarDelito.this, idDelito).show();
+            borrado();
+        }else {
             try {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();

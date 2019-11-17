@@ -157,8 +157,11 @@ public class CartaAntecedentesNoPenales extends javax.swing.JFrame {
         apellidos = campoApellidos.getText().trim();
         curp = campoCurp.getText().trim();
         
-        if(nombre.equals("") || apellidos.equals("") || curp.equals("")) {
-            System.out.println("Error");
+        if(nombre.equals("") || apellidos.equals("") || curp.equals("") || curp.length() > 18) {
+            //System.out.println("Error");
+            borrado();
+            CartaAntecedentesNoPenales.this.dispose();
+            new ExpedicionCartaFallida(CartaAntecedentesNoPenales.this).show();
         } else {
             generarCartas(evt);
         }
@@ -192,6 +195,8 @@ public class CartaAntecedentesNoPenales extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
+        
+        borrado();
     }
  
     private Paragraph getCabecera(String texto, String curp) {
@@ -249,6 +254,12 @@ public class CartaAntecedentesNoPenales extends javax.swing.JFrame {
                 + "Director General del Reclusorio";
      
         return formato;
+    }
+     
+    private void borrado() {
+        campoNombre.setText("");
+        campoApellidos.setText("");
+        campoCurp.setText("");
     }
     
     private ExpedirCarta ec;

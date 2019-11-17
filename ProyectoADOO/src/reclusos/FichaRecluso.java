@@ -332,12 +332,24 @@ public class FichaRecluso extends javax.swing.JFrame {
         Pattern p = Pattern.compile("[a-z]|[A-Z]");
         Matcher m = p.matcher(fianza);
         
-        if(ficha.equals("") || fianza.equals("") || fecha.equals("")) {
-            System.out.println("Error");
-        } else if(m.find()) {
-            System.out.println("Error");
+        if(ficha.equals("") || fianza.equals("") || fecha.equals("") || fechaIngreso.equals("") || fecha.length() > 10 || fechaIngreso.length() > 10) {
+            //System.out.println("Error");
+            borrado();
+            FichaRecluso.this.dispose();
+            new FichaRegistroInvalida(FichaRecluso.this).show();
+        } else if(validarFecha(fecha) || validarFecha(fechaIngreso)){
+            borrado();
+            FichaRecluso.this.dispose();
+            new FichaRegistroInvalida(FichaRecluso.this).show();
+        }else if(m.find()) {
+            //System.out.println("Error");
             FichaRecluso.this.dispose();
             new FianzaInvalida(FichaRecluso.this).show();
+        }else if(Existencias.siExiste("idficha", "ficha", ficha)){
+            //System.out.println("Ficha existente");
+            FichaRecluso.this.dispose();
+            new FichaExistente(FichaRecluso.this, ficha).show();
+            borrado();
         }else {
             try {
                 Connection miConexion = Conexion.dameConexion();
@@ -356,6 +368,35 @@ public class FichaRecluso extends javax.swing.JFrame {
         }
     }
     
+    private boolean validarFecha(String fecha) {
+        boolean bandera = false;
+        
+        String dia = fecha.substring(0, 2);
+        String mes = fecha.substring(3, 5);
+        String año = fecha.substring(6, 10);
+        
+        if(Integer.parseInt(dia) < 1 || Integer.parseInt(dia) > 31)
+            bandera = true;
+        else if(Integer.parseInt(mes) < 1|| Integer.parseInt(mes) > 12)
+            bandera = true;
+        else if(Integer.parseInt(año) < 1)
+            bandera = true;
+        
+        Pattern p = Pattern.compile("[0-9]");
+        Matcher m1 = p.matcher(dia);
+        Matcher m2 = p.matcher(mes);
+        Matcher m3 = p.matcher(año);
+       
+        if(!m1.find())
+            bandera = true;
+        else if(!m2.find())
+            bandera = true;
+        else if(!m3.find())
+            bandera = true;
+        
+        return bandera;
+    }
+    
     private void borrado() {
         campoIdFicha.setText("");
         campoFianza.setText("");
@@ -364,6 +405,7 @@ public class FichaRecluso extends javax.swing.JFrame {
         campoDelito.setText("");
         campoCondena.setText("");
         campoFecha.setText("");
+        campoFechaIngreso.setText("");
     }
     
     /**

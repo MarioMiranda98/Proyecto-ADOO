@@ -186,7 +186,12 @@ public class RegistrarReclusos extends javax.swing.JFrame {
             RegistrarReclusos.this.dispose();
             new RRFallido(RegistrarReclusos.this).show();
             borrado();
-        } else {
+        } else if (Existencias.siExiste("curp", "recluso", curp)) {
+            //System.out.println("Recluso Registrado");
+            RegistrarReclusos.this.dispose();
+            new ReclusoExistente(RegistrarReclusos.this, curp).show();
+            borrado();
+        }else {
             try {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();

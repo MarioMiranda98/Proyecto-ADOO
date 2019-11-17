@@ -19,6 +19,7 @@ public class ChecarReclusos extends javax.swing.JFrame {
      */
     public ChecarReclusos(FichasRegistradas fr, String curp) {
         initComponents();
+        setLocationRelativeTo(null);
         this.fr = fr;
         this.curp = curp;
         colocaDatos();
@@ -200,7 +201,7 @@ public class ChecarReclusos extends javax.swing.JFrame {
         campoSexo.setText("");
     }
     
-    private void colocaDatos() {
+    protected void colocaDatos() {
         try {
             Connection miConexion = Conexion.dameConexion();
             Statement sentencia = miConexion.createStatement();
@@ -239,8 +240,9 @@ public class ChecarReclusos extends javax.swing.JFrame {
         sexo = campoSexo.getText().trim();
         estado = (String) comboEstado.getSelectedItem();
         
-        if(nombre.equals("") || apellidos.equals("") || edad.equals("") || sexo.equals("")) {
-            System.out.println("Error");
+        if(nombre.equals("") || apellidos.equals("") || edad.equals("") || sexo.equals("") || sexo.length() > 1) {
+            //System.out.println("Error");
+            borrado();
         } else {
             try {
                 Connection miConexion = Conexion.dameConexion();

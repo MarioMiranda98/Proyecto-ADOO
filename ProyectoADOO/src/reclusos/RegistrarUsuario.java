@@ -57,7 +57,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel1.setText("Registrar Usuario");
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
@@ -113,9 +113,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -159,6 +156,10 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                                     .addComponent(campoSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(campoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +185,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel11)
                     .addComponent(campoSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(campoDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,10 +234,17 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         pass = campoPass.getText().trim();
         tipo = (String) (comboTipo.getSelectedItem());
         
-        if(curp.equals("") || nombre.equals("") || apellidos.equals("") || edad.equals("") || usuario.equals("") || pass.equals("") || domicilio.equals("") || sexo.equals("") || sexo.length() > 1) {
-            System.out.println("Error");
+        if(curp.equals("") || nombre.equals("") || apellidos.equals("") || edad.equals("") || usuario.equals("") || pass.equals("") || domicilio.equals("") || sexo.equals("") || sexo.length() > 1 || curp.length() > 18) {
+            //System.out.println("Error");
+            new RUFallido(RegistrarUsuario.this).show();
+            RegistrarUsuario.this.dispose();
             borrado();
-        } else {
+        } else if(Existencias.siExiste("nombreusuario", "usuarios", usuario)) {
+            //System.out.println("Usuario ya registrado");
+            new UsuarioExistente(RegistrarUsuario.this, usuario).show();
+            RegistrarUsuario.this.dispose();
+            borrado();
+        }else {
             try {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();

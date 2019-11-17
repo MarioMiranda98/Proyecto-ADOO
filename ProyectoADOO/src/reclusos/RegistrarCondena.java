@@ -159,10 +159,15 @@ public class RegistrarCondena extends javax.swing.JFrame {
         tipo = (String) comboTipo.getSelectedItem();
         
         if(idCondena.equals("") || descripcion.equals("")) {
-            System.out.println("Error");
+            //System.out.println("Error");
             RegistrarCondena.this.dispose();
             new RCFallida(RegistrarCondena.this).show();
-        } else {
+        } else if(Existencias.siExiste("idcondenas", "condenas", idCondena)) {
+            //System.out.println("Condena Existente");
+            RegistrarCondena.this.dispose();
+            new CondenaExistente(RegistrarCondena.this, idCondena).show();
+            borrado();
+        }else {
             try {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();

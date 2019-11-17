@@ -18,7 +18,7 @@ public class Conexion {
     
     public static Connection dameConexion() {
         try {
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adooreclusos?serverTimezone=UTC&SSL=false", "root", "root");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adooreclusos?serverTimezone=UTC&useSSL=false&autoReconnect=true", "root", "root");
             //System.out.println("Exito!!");
         }catch(Exception e) { e.getMessage(); }
         

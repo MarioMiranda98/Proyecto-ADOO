@@ -257,12 +257,11 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
         password = campoPass.getText().trim();
         tipo = (String) comboTipo.getSelectedItem();
         
-        if(nombre.equals("") || apellido.equals("") || edad.equals("") || sexo.equals("") || curp.equals("") || domicilio.equals("") || password.equals("")) {
+        if(nombre.equals("") || apellido.equals("") || edad.equals("") || sexo.equals("") || curp.equals("") || domicilio.equals("") || password.equals("") || sexo.length() > 1 || curp.length() > 18) {
             System.out.println("Error");
         } else {
             try {
                 Connection miConexion = Conexion.dameConexion();
-                ResultSet rs = null;
                 Statement sentencia = miConexion.createStatement();
                 
                 String sqlActualizaUsuario = "UPDATE usuarios SET nombre = '" + nombre + "', apellidos = '" + apellido +"', edad = '" + edad + "', sexo = '" + sexo + "', domicilio = '" + domicilio + "', curp = '" + curp + "', contrasena = '" + password +"', tipo = '" + tipo + "' WHERE nombreusuario = '" + nombreUsuario + "'";
@@ -287,7 +286,6 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
            try {
                Connection miConexion = Conexion.dameConexion();
                Statement sentencia = miConexion.createStatement();
-               ResultSet rs = null;
                
                String sqlEliminarUsuario = "DELETE FROM usuarios WHERE nombreusuario = '" + nombreUsuario + "'";
                sentencia.executeUpdate(sqlEliminarUsuario);
