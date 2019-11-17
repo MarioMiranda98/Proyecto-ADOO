@@ -19,6 +19,7 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
      */
     public UsuarioRegistrado(ChecarUsuarios cu, String nombreUsuario) {
         initComponents();
+        setLocationRelativeTo(null);
         this.cu = cu;
         this.nombreUsuario = nombreUsuario;
         colocaDatos();
@@ -258,7 +259,10 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
         tipo = (String) comboTipo.getSelectedItem();
         
         if(nombre.equals("") || apellido.equals("") || edad.equals("") || sexo.equals("") || curp.equals("") || domicilio.equals("") || password.equals("") || sexo.length() > 1 || curp.length() > 18) {
-            System.out.println("Error");
+            //System.out.println("Error");
+            borrado();
+            UsuarioRegistrado.this.dispose();
+            new ActualizacionUsuarioFallida(UsuarioRegistrado.this).show();
         } else {
             try {
                 Connection miConexion = Conexion.dameConexion();
