@@ -265,6 +265,7 @@ public class UsuarioRegistrado extends javax.swing.JFrame {
             new ActualizacionUsuarioFallida(UsuarioRegistrado.this).show();
         } else {
             try {
+                password = EncriptadorAES.encriptar(password, "secreto!");
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();
                 
