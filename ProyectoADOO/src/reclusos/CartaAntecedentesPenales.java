@@ -19,6 +19,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.*;
 import java.io.File;
 import java.io.FileOutputStream;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -217,6 +218,8 @@ public class CartaAntecedentesPenales extends javax.swing.JFrame {
                 doc.add(getFirmas(colocarFirmas()));
                 doc.add(getFooter(FOOTER));
                 doc.close();
+                
+                JOptionPane.showMessageDialog(CartaAntecedentesPenales.this, "Carta Guardada en " + ruta);
             } catch (Exception e) {
                 e.printStackTrace();
             }

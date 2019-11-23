@@ -240,6 +240,13 @@ public class ChecarReclusos extends javax.swing.JFrame {
         sexo = campoSexo.getText().trim();
         estado = (String) comboEstado.getSelectedItem();
         
+        if(comboEstado.getSelectedIndex() == 0)
+            estadoFicha = "Curso";
+        else if(comboEstado.getSelectedIndex() == 1)
+            estadoFicha = "Cumplida";
+        else if(comboEstado.getSelectedIndex() == 2)
+            estadoFicha = "Profugo";
+        
         if(nombre.equals("") || apellidos.equals("") || edad.equals("") || sexo.equals("") || sexo.length() > 1) {
             //System.out.println("Error");
             borrado();
@@ -248,7 +255,13 @@ public class ChecarReclusos extends javax.swing.JFrame {
                 Connection miConexion = Conexion.dameConexion();
                 Statement sentencia = miConexion.createStatement();
 
-                String sqlActualizarRecluso = "UPDATE recluso set nombre = '" + nombre + "', apellido = '" + apellidos +"', edad = '" + edad + "', sexo = '" + sexo +"', estado = '" + estado + "' WHERE curp = '" + curp + "'";
+                String sqlActualizarRecluso = "UPDATE recluso INNER JOIN ficha"
+                        + " ON recluso.curp = ficha.recluso_idrecluso"
+                        + " set recluso.nombre = '" + nombre + "', recluso.apellido = '" + apellidos +"', "
+                        + " recluso.edad = '" + edad + "', recluso.sexo = '" + sexo +"', "
+                        + " recluso.estado = '" + estado + "', ficha.estadoFicha = '" + estadoFicha + "' WHERE "
+                        + " recluso.curp = '" + curp + "' AND"
+                        + " ficha.estadoFicha = 'Curso'";
                 int resp = JOptionPane.showConfirmDialog(ChecarReclusos.this, "¿Confirmar Cambios?", "Cambios", JOptionPane.YES_NO_OPTION);
                 if(resp == JOptionPane.OK_OPTION) {
                     sentencia.executeUpdate(sqlActualizarRecluso);
@@ -271,6 +284,7 @@ public class ChecarReclusos extends javax.swing.JFrame {
     private String edad;
     private String sexo;
     private String estado;
+    private String estadoFicha;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoApellido;

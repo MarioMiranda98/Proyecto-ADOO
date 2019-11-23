@@ -191,6 +191,8 @@ public class CartaAntecedentesNoPenales extends javax.swing.JFrame {
                 doc.add(getFirmas(colocarFirmas()));
                 doc.add(getFooter(FOOTER));
                 doc.close();
+                
+                JOptionPane.showMessageDialog(CartaAntecedentesNoPenales.this, "Carta Guardada en " + ruta);
             } catch (Exception e) {
                 e.printStackTrace();
             }
